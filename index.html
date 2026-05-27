@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Posture Maturity Model 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-name">Security Maturity</span>
+        <span class="brand-badge">2026</span>
+      </div>
+      <nav class="site-nav">
+        <a href="#about">Threat Context</a>
+        <a href="#assessment">Assessment</a>
+        <a href="#reference">Reference</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">For Low-to-Mid Maturity Organizations</p>
+    <h1>Security Posture<br>Maturity Model</h1>
+    <p class="hero-desc">Evaluate your organization's resilience against autonomous, machine-speed cyber threats across five critical dimensions — and receive actionable next steps.</p>
+    <div class="hero-buttons">
+      <a href="#assessment" class="btn btn-white">Begin Assessment</a>
+      <a href="#about" class="btn btn-ghost">Learn More</a>
+    </div>
+    <div class="hero-meta">
+      <span>5 Dimensions</span>
+      <span class="sep">·</span>
+      <span>5 Maturity Levels</span>
+      <span class="sep">·</span>
+      <span>CIS Controls v8 IG1</span>
+      <span class="sep">·</span>
+      <span>NIS2 / DORA Aligned</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / THREAT CONTEXT -->
+<section id="about">
+  <div class="container">
+    <div class="section-intro">
+      <h2>The 2026 Threat Landscape</h2>
+      <p>Autonomous AI-enabled agents have fundamentally shifted the cyber threat landscape — enabling machine-speed attack chaining that outpaces traditional human-paced security operations.</p>
+    </div>
+
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-icon">&#9889;</div>
+        <h3>Machine-Speed Exploitation</h3>
+        <p>Autonomous offensive agents can discover, chain, and exploit vulnerabilities in hours — often before security teams can mobilize a response.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128279;</div>
+        <h3>Attack Path Chaining</h3>
+        <p>Low-severity misconfigurations across multiple systems are chained into high-impact breach paths, bypassing traditional perimeter defenses.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#8987;</div>
+        <h3>The Governance Gap</h3>
+        <p>Technical remediation speed has outpaced governance approval velocity, leaving exploitable windows that machine-speed adversaries capitalize on within minutes.</p>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-left">
+        <div class="formula-caption">Governance Friction Factor</div>
+        <div class="formula-math">G<sub>f</sub> = T<sub>deploy</sub> / T<sub>approve</sub></div>
+      </div>
+      <div class="formula-right">
+        <p>When <strong>G<sub>f</sub> &#8811; 1</strong>, technical deployment capability outpaces governance approval speed — creating an open window of exposure that machine-speed adversaries exploit within minutes. Resolving this asymmetry requires pre-approved automated response policies.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">Five Dimensions of Resilience</h3>
+    <div class="cards-5">
+      <div class="dim-sm d1">
+        <span class="dim-n">01</span>
+        <strong>Visibility</strong>
+        <p>Real-time inventory of all assets across physical, virtual, and cloud environments.</p>
+      </div>
+      <div class="dim-sm d2">
+        <span class="dim-n">02</span>
+        <strong>Tooling Speed</strong>
+        <p>Time from vulnerability disclosure to automated scanning and remediation execution.</p>
+      </div>
+      <div class="dim-sm d3">
+        <span class="dim-n">03</span>
+        <strong>Approval Speed</strong>
+        <p>How rapidly emergency security actions can be authorized and deployed.</p>
+      </div>
+      <div class="dim-sm d4">
+        <span class="dim-n">04</span>
+        <strong>Identity Gating</strong>
+        <p>Mechanisms to verify users and machines before granting access to corporate assets.</p>
+      </div>
+      <div class="dim-sm d5">
+        <span class="dim-n">05</span>
+        <strong>Recovery Drills</strong>
+        <p>Frequency and comprehensiveness of restoration testing to validate recovery capabilities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="bg-light">
+  <div class="container">
+    <div class="section-intro">
+      <h2>Self-Assessment</h2>
+      <p>Select the level that most accurately describes your organization's current state for each dimension. Honest answers produce the most useful results.</p>
+    </div>
+    <div id="assessment-form"></div>
+    <div class="assessment-footer">
+      <p class="completion-hint" id="completion-hint">Answer all 5 dimensions to view your results.</p>
+      <button id="btn-results" class="btn btn-primary btn-lg" disabled>
+        View My Results <span id="progress-count">(0 / 5)</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS (hidden until assessment complete) -->
+<section id="results" class="hidden">
+  <div class="container">
+
+    <!-- Shown only in print -->
+    <div class="print-header">
+      <h2 style="color:#1e3a5f;margin-bottom:4px;">Security Posture Maturity Assessment Report</h2>
+      <p style="color:#4b5563;margin-bottom:2px;">2026 Security Posture Maturity Model &mdash; Autonomous Machine-Speed Threat Resilience</p>
+      <p id="print-date" style="color:#9ca3af;font-size:0.875rem;"></p>
+      <hr style="margin:16px 0;border:none;border-top:2px solid #e5e7eb;">
+    </div>
+
+    <div class="section-intro">
+      <h2>Your Maturity Profile</h2>
+      <p class="result-date" id="result-date"></p>
+    </div>
+
+    <div class="results-layout">
+      <div class="chart-panel">
+        <div class="chart-card">
+          <canvas id="radar-chart" width="360" height="360"></canvas>
+        </div>
+        <div class="overall-card">
+          <div class="oc-label">Overall Score</div>
+          <div class="oc-score" id="oc-score">—</div>
+          <div class="oc-tier" id="oc-tier">—</div>
+        </div>
+      </div>
+      <div class="scores-panel">
+        <h3>Dimension Breakdown</h3>
+        <div id="dim-scores"></div>
+      </div>
+    </div>
+
+    <div id="action-triggers" class="hidden">
+      <h3 class="triggers-heading">&#9888; Priority Action Triggers</h3>
+      <p class="triggers-desc">Dimensions scoring Level 1 or 2 require immediate attention. The steps below are low-cost quick wins aligned with CIS Controls v8 Implementation Group 1 (IG1) — the minimum essential cyber hygiene baseline.</p>
+      <div id="trigger-cards"></div>
+    </div>
+
+    <div class="result-actions">
+      <button id="btn-print" class="btn btn-primary">&#8595; Download Report (PDF)</button>
+      <button id="btn-retake" class="btn btn-outline-dark">Retake Assessment</button>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCE -->
+<section id="reference" class="bg-light">
+  <div class="container">
+    <div class="section-intro">
+      <h2>Executive Reference</h2>
+      <p>Non-technical proxy metrics translate security posture into business risk language for board-level stakeholders and executive teams.</p>
+    </div>
+
+    <h3 class="ref-heading">Proxy Metrics for Executive Alignment</h3>
+    <div class="table-scroll">
+      <table id="proxy-table" class="ref-table"></table>
+    </div>
+
+    <h3 class="ref-heading">Regulatory Context</h3>
+    <div class="cards-3">
+      <div class="card">
+        <div class="reg-badge">NIS2 / Cybersäkerhetslagen 2025:1506</div>
+        <h4>EU Network &amp; Information Security Directive</h4>
+        <p>In force in Sweden from January 15, 2026. Covers 18 critical sectors with 50+ employees or &euro;10M+ annual turnover.</p>
+        <ul class="reg-list">
+          <li><strong>Incident reporting:</strong> 24h early warning &rarr; 72h detailed notification &rarr; 1-month final report</li>
+          <li><strong>Board liability:</strong> CEOs and directors personally liable for cybersecurity compliance</li>
+          <li><strong>Penalties:</strong> Up to &euro;10M or 2% of global turnover for essential entities</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="reg-badge">DORA</div>
+        <h4>Digital Operational Resilience Act</h4>
+        <p>Mandates demonstrable operational resilience for financial sector organizations, with direct board-level accountability.</p>
+        <ul class="reg-list">
+          <li><strong>CTEM alignment:</strong> Continuous Threat Exposure Management satisfies NIS2 Article 21.2(e)</li>
+          <li><strong>Recovery testing:</strong> Quarterly restore drills directly support DORA resilience mandates</li>
+          <li><strong>Governance velocity:</strong> Pre-approved response frameworks reduce regulatory exposure</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="reg-badge">CIS Controls v8 IG1</div>
+        <h4>Minimum Essential Cyber Hygiene</h4>
+        <p>Implementation Group 1 defines the baseline for all organizations. Assessment action triggers map directly to IG1 controls.</p>
+        <ul class="reg-list">
+          <li><strong>Control 1.1:</strong> Enterprise Asset Inventory &rarr; Visibility</li>
+          <li><strong>Control 6.3:</strong> Multi-Factor Authentication &rarr; Identity Gating</li>
+          <li><strong>Control 7.1:</strong> Vulnerability Management &rarr; Tooling Speed</li>
+          <li><strong>Control 11.1:</strong> Data Recovery Process &rarr; Recovery Drills</li>
+          <li><strong>Control 17.1:</strong> Incident Management &rarr; Approval Speed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="footer-brand">2026 Security Posture Maturity Model</p>
+    <p class="footer-note">Assessment results are calculated locally in your browser. No data is transmitted or stored externally.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
