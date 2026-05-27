@@ -56,8 +56,21 @@ const DIMENSIONS = [
     ],
   },
   {
+    id: 'detectionMonitoring',
+    name: 'Dimension 5: Detection & Monitoring',
+    short: 'Detection & Monitoring',
+    question: 'How does the organization detect active threats, anomalous behavior, and security incidents across its environment?',
+    levels: [
+      { label: 'Unmanaged',   desc: 'No centralized log collection or alerting in place; incidents are discovered through operational failures, user complaints, or external breach notifications.' },
+      { label: 'Reactive',    desc: 'Basic logging is enabled on core systems but reviewed manually and infrequently; no centralized aggregation or automated alerting exists.' },
+      { label: 'Operational', desc: 'A SIEM or centralized log platform aggregates events from key systems with basic alerting rules; all triage requires manual analyst review.' },
+      { label: 'Managed',     desc: 'Endpoint detection and response (EDR) tooling is deployed across the environment with tuned detection rules, defined escalation workflows, and a measured mean time to detect (MTTD).' },
+      { label: 'Optimized',   desc: 'Real-time behavioral anomaly detection correlates telemetry across endpoints, identity, network, and cloud; threats are surfaced and escalated in minutes without human initiation.' },
+    ],
+  },
+  {
     id: 'recoveryDrills',
-    name: 'Dimension 5: Recovery Drills',
+    name: 'Dimension 6: Recovery Drills',
     short: 'Recovery Drills',
     question: 'How frequently and comprehensively are system restoration procedures executed to validate business recovery capabilities?',
     levels: [
@@ -94,6 +107,12 @@ const ACTION_TRIGGERS = {
     immediate: 'Enforce multi-factor authentication (MFA) across all administrative, email, and financial systems.',
     secondary: 'Create a tenant rule within your identity provider to block all legacy authentication connections.',
     cis: 'CIS Control 6.3: Require Multi-Factor Authentication',
+  },
+  detectionMonitoring: {
+    label: 'Detection & Monitoring',
+    immediate: 'Enable audit logging on all core systems (identity provider, email, cloud platform) and route logs to a central location with a defined retention period.',
+    secondary: 'Configure basic alerting rules for high-priority events: failed login spikes, new admin account creation, and bulk file access or deletion.',
+    cis: 'CIS Control 8.2: Collect Audit Logs',
   },
   recoveryDrills: {
     label: 'Recovery Drills',
@@ -189,10 +208,11 @@ function onFormChange(e) {
   const dimId = e.target.name;
   document.getElementById(`card-${dimId}`).classList.add('answered');
   const answered = countAnswered();
-  document.getElementById('progress-count').textContent = `(${answered} / 5)`;
+  const total = DIMENSIONS.length;
+  document.getElementById('progress-count').textContent = `(${answered} / ${total})`;
   document.getElementById('completion-hint').textContent =
-    answered === 5 ? 'All dimensions answered. Ready to view results.' : `${5 - answered} dimension${5 - answered === 1 ? '' : 's'} remaining.`;
-  document.getElementById('btn-results').disabled = answered < 5;
+    answered === total ? 'All dimensions answered. Ready to view results.' : `${total - answered} dimension${total - answered === 1 ? '' : 's'} remaining.`;
+  document.getElementById('btn-results').disabled = answered < total;
 }
 
 function countAnswered() {
@@ -369,7 +389,7 @@ function retakeAssessment() {
   document.querySelectorAll('#assessment-form input[type="radio"]').forEach(r => { r.checked = false; });
   document.querySelectorAll('.dim-card').forEach(c => c.classList.remove('answered'));
   document.getElementById('btn-results').disabled = true;
-  document.getElementById('progress-count').textContent = '(0 / 5)';
+  document.getElementById('progress-count').textContent = '(0 / 6)';
   document.getElementById('completion-hint').textContent = 'Answer all 5 dimensions to view your results.';
   if (radarChart) { radarChart.destroy(); radarChart = null; }
   document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
