@@ -35,7 +35,7 @@
       <a href="#about" class="btn btn-ghost">Learn More</a>
     </div>
     <div class="hero-meta">
-      <span>6 Dimensions</span>
+      <span>7 Dimensions</span>
       <span class="sep">·</span>
       <span>5 Maturity Levels</span>
       <span class="sep">·</span>
@@ -87,8 +87,8 @@
       <p class="gap-conclusion">The only safe outcome is absolute speed: critical vulnerabilities in internet-facing systems must go from discovery to verified deployment within 24 hours. Governance processes that cannot support this threshold must be redesigned, not optimized.</p>
     </div>
 
-    <h3 class="sub-heading">Six Dimensions of Resilience</h3>
-    <div class="cards-6">
+    <h3 class="sub-heading">Seven Dimensions of Resilience</h3>
+    <div class="cards-7">
       <div class="dim-sm d1">
         <span class="dim-n">01</span>
         <strong>Visibility</strong>
@@ -96,26 +96,31 @@
       </div>
       <div class="dim-sm d2">
         <span class="dim-n">02</span>
-        <strong>Tooling Speed</strong>
-        <p>Time from vulnerability disclosure to automated scanning and remediation execution.</p>
+        <strong>Lifecycle Management</strong>
+        <p>Tracking systems and software against vendor support timelines and end-of-life status.</p>
       </div>
       <div class="dim-sm d3">
         <span class="dim-n">03</span>
-        <strong>Approval Speed</strong>
-        <p>How rapidly emergency security actions can be authorized and deployed.</p>
+        <strong>Tooling Speed</strong>
+        <p>Time from vulnerability disclosure to automated scanning and remediation execution.</p>
       </div>
       <div class="dim-sm d4">
         <span class="dim-n">04</span>
-        <strong>Identity Gating</strong>
-        <p>Mechanisms to verify users and machines before granting access to corporate assets.</p>
+        <strong>Approval Speed</strong>
+        <p>How rapidly emergency security actions can be authorized and deployed.</p>
       </div>
       <div class="dim-sm d5">
         <span class="dim-n">05</span>
-        <strong>Detection &amp; Monitoring</strong>
-        <p>Ability to detect active threats and anomalous behavior across the environment.</p>
+        <strong>Identity Gating</strong>
+        <p>Mechanisms to verify users and machines before granting access to corporate assets.</p>
       </div>
       <div class="dim-sm d6">
         <span class="dim-n">06</span>
+        <strong>Detection &amp; Monitoring</strong>
+        <p>Ability to detect active threats and anomalous behavior across the environment.</p>
+      </div>
+      <div class="dim-sm d7">
+        <span class="dim-n">07</span>
         <strong>Recovery Drills</strong>
         <p>Frequency and comprehensiveness of restoration testing to validate recovery capabilities.</p>
       </div>
@@ -132,9 +137,9 @@
     </div>
     <div id="assessment-form"></div>
     <div class="assessment-footer">
-      <p class="completion-hint" id="completion-hint">Answer all 6 dimensions to view your results.</p>
+      <p class="completion-hint" id="completion-hint">Answer all 7 dimensions to view your results.</p>
       <button id="btn-results" class="btn btn-primary btn-lg" disabled>
-        View My Results <span id="progress-count">(0 / 6)</span>
+        View My Results <span id="progress-count">(0 / 7)</span>
       </button>
     </div>
   </div>
@@ -228,6 +233,7 @@
         <p>Implementation Group 1 defines the baseline for all organizations. Assessment action triggers map directly to IG1 controls.</p>
         <ul class="reg-list">
           <li><strong>Control 1.1:</strong> Enterprise Asset Inventory &rarr; Visibility</li>
+          <li><strong>Control 2.2:</strong> Ensure Authorized Software is Currently Supported &rarr; Lifecycle Management</li>
           <li><strong>Control 6.3:</strong> Multi-Factor Authentication &rarr; Identity Gating</li>
           <li><strong>Control 7.1:</strong> Vulnerability Management &rarr; Tooling Speed</li>
           <li><strong>Control 8.2:</strong> Collect Audit Logs &rarr; Detection &amp; Monitoring</li>

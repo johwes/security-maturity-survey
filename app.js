@@ -17,8 +17,21 @@ const DIMENSIONS = [
     ],
   },
   {
+    id: 'lifecycleManagement',
+    name: 'Dimension 2: Lifecycle Management',
+    short: 'Lifecycle Management',
+    question: 'How does the organization track and manage the support lifecycle status of its systems, software, and operational technology?',
+    levels: [
+      { label: 'Unmanaged',   desc: 'No tracking of end-of-life dates or support contract status; EOL software and unsupported systems are discovered only upon failure or during a security incident.' },
+      { label: 'Reactive',    desc: 'End-of-life dates are noted informally for major operating systems after issues arise; no proactive planning exists for replacement or extended support procurement.' },
+      { label: 'Operational', desc: 'EOL dates are tracked for core servers and operating systems in a central record; migration projects exist but are frequently delayed with no formal compensating controls on unsupported systems.' },
+      { label: 'Managed',     desc: 'All assets are tracked against vendor support timelines with defined remediation plans; compensating controls such as network isolation and enhanced monitoring are formally applied to EOL systems pending migration.' },
+      { label: 'Optimized',   desc: 'Lifecycle status is integrated into the real-time asset inventory with automated alerts as systems approach end-of-life; no system enters unsupported status without a documented compensating control strategy and approved migration timeline.' },
+    ],
+  },
+  {
     id: 'toolingSpeed',
-    name: 'Dimension 2: Tooling Speed',
+    name: 'Dimension 3: Tooling Speed',
     short: 'Tooling Speed',
     question: 'What is the average duration between the public disclosure of a vulnerability and automated scanning and remediation execution across the environment?',
     levels: [
@@ -31,7 +44,7 @@ const DIMENSIONS = [
   },
   {
     id: 'approvalSpeed',
-    name: 'Dimension 3: Approval Speed',
+    name: 'Dimension 4: Approval Speed',
     short: 'Approval Speed',
     question: 'How rapidly can emergency security remediations or containment protocols be authorized and deployed during an active threat event?',
     levels: [
@@ -44,7 +57,7 @@ const DIMENSIONS = [
   },
   {
     id: 'identityGating',
-    name: 'Dimension 4: Identity Gating',
+    name: 'Dimension 5: Identity Gating',
     short: 'Identity Gating',
     question: 'What mechanisms are utilized to authenticate and verify user and machine identities prior to accessing corporate data assets?',
     levels: [
@@ -57,7 +70,7 @@ const DIMENSIONS = [
   },
   {
     id: 'detectionMonitoring',
-    name: 'Dimension 5: Detection & Monitoring',
+    name: 'Dimension 6: Detection & Monitoring',
     short: 'Detection & Monitoring',
     question: 'How does the organization detect active threats, anomalous behavior, and security incidents across its environment?',
     levels: [
@@ -70,7 +83,7 @@ const DIMENSIONS = [
   },
   {
     id: 'recoveryDrills',
-    name: 'Dimension 6: Recovery Drills',
+    name: 'Dimension 7: Recovery Drills',
     short: 'Recovery Drills',
     question: 'How frequently and comprehensively are system restoration procedures executed to validate business recovery capabilities?',
     levels: [
@@ -89,6 +102,12 @@ const ACTION_TRIGGERS = {
     immediate: 'Document all active physical servers, cloud databases, and SaaS tools in a central spreadsheet with assigned owners.',
     secondary: 'Audit active user license registries in M365 or Google Workspace to locate and disable orphaned accounts.',
     cis: 'CIS Control 1.1: Establish and Maintain Detailed Enterprise Asset Inventory',
+  },
+  lifecycleManagement: {
+    label: 'Lifecycle Management',
+    immediate: 'Audit all operating systems and software in use and check each against the vendor\'s published end-of-life date — flag anything currently running without active vendor support.',
+    secondary: 'For any EOL system identified, apply an immediate compensating control: isolate it from the internet, restrict lateral network access, and add it to an enhanced monitoring scope until replacement is planned.',
+    cis: 'CIS Control 2.2: Ensure Authorized Software is Currently Supported',
   },
   toolingSpeed: {
     label: 'Tooling Speed',
@@ -389,7 +408,7 @@ function retakeAssessment() {
   document.querySelectorAll('#assessment-form input[type="radio"]').forEach(r => { r.checked = false; });
   document.querySelectorAll('.dim-card').forEach(c => c.classList.remove('answered'));
   document.getElementById('btn-results').disabled = true;
-  document.getElementById('progress-count').textContent = '(0 / 6)';
+  document.getElementById('progress-count').textContent = `(0 / ${DIMENSIONS.length})`;
   document.getElementById('completion-hint').textContent = 'Answer all 5 dimensions to view your results.';
   if (radarChart) { radarChart.destroy(); radarChart = null; }
   document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
